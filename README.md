@@ -6,10 +6,11 @@ git clone project, needs Java jdk 8
 
 build:
 mvn clean install
-
+<p>
 run:
 goto ~/target: execute created ~.jar with argument(s) e.g.:
 java -jar expressionInterpreter-0.0.1-SNAPSHOT.jar "2*(3+7)"
+</p>
 20
 The application just prints the result of the given arithmetic or logical expression(s)
 It is possible to add more than one expression and to use variables too. e.g.:
