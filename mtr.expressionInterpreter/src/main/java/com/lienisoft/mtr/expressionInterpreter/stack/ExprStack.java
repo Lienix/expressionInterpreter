@@ -182,11 +182,7 @@ public class ExprStack extends Expr {
 							if (function != null) {
 								switch (function.getType()) {
 								case IF: {
-									System.out.println("result: " + result);
 									final Boolean checked = Operate.getBool(result);
-
-									System.out.println("checked: " + checked);
-
 									if (checked != null) {
 										if (checked) {
 											return processIF(arg, expression, i);
