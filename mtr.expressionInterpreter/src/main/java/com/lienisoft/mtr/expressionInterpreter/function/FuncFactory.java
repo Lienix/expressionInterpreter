@@ -10,10 +10,14 @@ import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.lienisoft.mtr.expressionInterpreter.basic.IValFactory;
 
 //public class FunctionFactory implements IFunctionFactory<IDataProvider <K, V>> {
 public class FuncFactory {
+	private static final Logger LOGGER = LoggerFactory.getLogger(FuncFactory.class);
 
 	protected final Map<String, Class<Func>> functionMap;
 
@@ -25,8 +29,10 @@ public class FuncFactory {
 
 		functionMap = new HashMap<>();
 
+		// TODO:
+		// This does not work in any thinkable environment!!!
 		final List<Class<?>> list = getClassesInPackage(getClass().getPackage().getName());
-
+		
 		for (final Class<?> clazz : list) {
 			final Class<?> superclass = clazz.getSuperclass();
 
@@ -57,7 +63,23 @@ public class FuncFactory {
 			return new FuncIf();
 		case FuncLoop.name:
 			return new FuncLoop();
-		// case FunctionConvert.name:
+		case FuncGet.name:
+			return new FuncGet();
+		case FuncGetPat.name:
+			return new FuncGetPat();
+		case FuncAbs.name:
+			return new FuncAbs();
+		case FuncLen.name:
+			return new FuncLen();
+		case FuncRemove.name:
+			return new FuncRemove();
+		case FuncStartsWith.name:
+			return new FuncStartsWith();
+		case FunctionContains.name:
+			return new FunctionContains();
+		case FunctionFind.name:
+			return new FunctionFind();
+			// case FunctionConvert.name:
 		// return new FunctionConvert<>(valFactory);
 		default:
 			break;

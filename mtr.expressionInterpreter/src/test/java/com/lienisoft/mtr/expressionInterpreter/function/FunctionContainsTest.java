@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import com.lienisoft.mtr.expressionInterpreter.main.TDataArg;
 import com.lienisoft.mtr.expressionInterpreter.process.ExpressionTester;
+import com.lienisoft.mtr.expressionInterpreter.process.ExpressionTester.Errors;
 import com.lienisoft.mtr.utils.JsonSerializer;
 
 public class FunctionContainsTest {
@@ -17,9 +18,10 @@ public class FunctionContainsTest {
 		{
 			final TDataArg jh = new TDataArg();
 			final String expression = "B = CONTAINS(\"ABCD\",\"CD\")";
-			ExpressionTester.evaluateExpression(jh, expression);
+			Errors errs = ExpressionTester.evaluateExpression(jh, expression);
 			System.out.println(jh);
 			assertTrue(jh.get("B", Boolean.class));
+			System.out.println(errs);
 		}
 
 		{
@@ -129,9 +131,13 @@ public class FunctionContainsTest {
 			
 			
 			final String expression = "result = " + MEGA_FILTER_EXPRESSION;
-			ExpressionTester.evaluateExpression(jh, expression);
+			
+			System.out.println(expression);
+			System.out.println();
+			Errors errs = ExpressionTester.evaluateExpression(jh, expression);
 			System.out.println(JsonSerializer.toJson(jh.get()));
 			assertTrue(jh.get("result", Boolean.class));
+			System.out.println(errs);
 		}
 		}
 	
