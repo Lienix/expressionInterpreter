@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lienisoft.mtr</groupId>
 	<artifactId>expressionInterpreter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>Expression Interpreter</name>
 	<description>Utilities for Decoding and Encoding Text Messages</description>
 	<properties>
